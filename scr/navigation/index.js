@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer ,useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { Pressable } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -115,9 +115,9 @@ const HomeStack = () =>{
             <Stack.Screen
              name="Todo"
              component={Todoscreen}
-             options={({route})=>({
-                 title:route.day,
-                 //headerShown: false,
+             options={({navigation})=>({
+                 title:'',
+                 headerShown: false,    
              })}
             />
         </Stack.Navigator>
