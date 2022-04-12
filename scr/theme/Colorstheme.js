@@ -6,13 +6,25 @@ const Colorstheme = extendTheme({
     colors: {
       // Add new color
       primary: {
-        50: '#F9FBFF',
+        light: '#F9FBFF',
         100: '#1D2942',
       }
     },
     config: {
       // Changing initialColorMode to 'dark'
       initialColorMode: 'dark',
+    },
+    fontConfig:{
+      poorstory:{
+        100:{
+          normal:'PoorStory_400Regular',
+        },
+      },
+    },
+    fonts:{
+      heading: 'PoorStory_400Regular',
+      body: 'PoorStory_400Regular',
+      mono: 'PoorStory_400Regular',
     },
 });
 

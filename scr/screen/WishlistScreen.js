@@ -1,14 +1,16 @@
 import React from 'react';
-import { Center, Text } from "native-base";
+import { NativeBaseProvider ,Center, Text } from "native-base";
 import Colorstheme from '../theme/Colorstheme';
 
 const Wishlistscreen = () => {
     return (
-    <Center theme={Colorstheme} bg="primary.50" flex={1}>
-        <Text fontSize={30}>
-            This is a Wishlist Page
-        </Text>              
-    </Center>
+    <NativeBaseProvider theme={Colorstheme}>
+        <Center  bg="primary.light" flex={1}>
+            <Text fontSize={30} color="primary.100">
+                This is a Wishlist Page
+            </Text>              
+        </Center>
+    </NativeBaseProvider>
     );
 }
 

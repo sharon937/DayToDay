@@ -5,7 +5,7 @@ import { useFonts, PoorStory_400Regular } from '@expo-google-fonts/poor-story';
 import { Calendar } from 'react-native-calendars';
 import AppLoading from 'expo-app-loading';
 
-const MyCalendar =() => {
+const MyCalendar =({navigation}) => {
 
   let [fontsLoaded] = useFonts({
     PoorStory_400Regular
@@ -16,9 +16,13 @@ const MyCalendar =() => {
   }
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider >
       <Center style={styles.container}>
         <Calendar
+            onDayPress={day => {
+              console.log('selected day', day);
+              navigation.navigate('Todo', day);
+            }}
            theme={{
             calendarBackground: '#F9FBFF',
             textMonthFontFamily: 'PoorStory_400Regular',

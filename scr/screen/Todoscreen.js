@@ -1,12 +1,16 @@
 import React from 'react';
-import { Center, Text } from "native-base";
+import { NativeBaseProvider ,Center, Text } from "native-base";
+
 import Colorstheme from '../theme/Colorstheme';
 
-const Todoscreen = () => {
+const Todoscreen = ({route}) => {
+    const{
+        dateString,
+    } = route.params;
     return (
-    <Center theme={Colorstheme} bg="primary.50" flex={1}>
-        <Text fontSize={30} bg="primary.50">
-            This is a Todo Page
+    <Center theme={Colorstheme} flex={1}>
+        <Text fontSize={30}  style={{fontFamily:'PoorStory_400Regular'}}>
+            This is a Todo Page {dateString}
         </Text>              
     </Center>
     );

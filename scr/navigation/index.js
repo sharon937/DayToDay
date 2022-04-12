@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer ,useTheme } from '@react-navigation/native';
-/*import { createNativeStackNavigator } from '@react-navigation/native-stack';*/
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -16,6 +16,7 @@ import Wishlistscreen from '../screen/WishlistScreen';
 import MyTheme from '../theme/Mytheme';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const Navigation =() =>{
     return(
@@ -42,7 +43,7 @@ const Mytabs =()=>{
         >
             <Tab.Screen
             name="HomeStack"
-            component={Calenscreen}
+            component={HomeStack}
             options={{
                 title:"",
                 tabBarIcon:({color}) =>(
@@ -100,7 +101,28 @@ const Mytabs =()=>{
     );
 }
 
-
+const HomeStack = () =>{
+    return(
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Home"
+                component={Calenscreen}
+                options={{
+                    title:'',
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+             name="Todo"
+             component={Todoscreen}
+             options={({route})=>({
+                 title:route.day,
+                 //headerShown: false,
+             })}
+            />
+        </Stack.Navigator>
+    );
+}
 
 export default Navigation;
 
