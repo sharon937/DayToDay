@@ -1,11 +1,13 @@
 import React from 'react';
-import { SafeAreaProvider ,} from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView ,} from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider ,Center, Text, HStack } from "native-base";
 import { Pressable } from 'native-base';
 
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Colorstheme from '../theme/Colorstheme';
+import Todolist from '../component/Todolist';
+import  Colorstheme from '../theme/Colorstheme';
 
 const Todoscreen = ({route,navigation}) => {
     const{
@@ -15,22 +17,24 @@ const Todoscreen = ({route,navigation}) => {
     <SafeAreaProvider>
         <StatusBar/>
         <NativeBaseProvider  theme={Colorstheme}>
-                <Center mt='10'>
-                    <Text fontSize={30}  color="primary.100">
-                        {year}/{month}/{day}
-                    </Text> 
-                    <Pressable>
+                <HStack  mt="10" flex={1} bg="primary.100" justifyContent="center" >                 
+                    <Pressable position="absolute" left="6" top="3.5">
                             <MaterialCommunityIcons 
                             name={'chevron-left'} 
                             color={'black'} 
-                            size={25}
+                            size={45}
                             onPress={ () => {navigation.goBack();}} 
-                        />
-                        </Pressable>        
-                </Center>
-
-        </NativeBaseProvider>
+                            />
+                    </Pressable> 
+                    <Text fontSize={30}  color="primary.100" mt="4" >
+                        {year}/{month}/{day}
+                    </Text>       
+                </HStack > 
+                        
+        </NativeBaseProvider> 
+           
     </SafeAreaProvider>
+    
     );
 }
 

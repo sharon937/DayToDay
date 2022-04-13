@@ -8,6 +8,7 @@ const Colorstheme = extendTheme({
       primary: {
         light: '#F9FBFF',
         100: '#1D2942',
+        pen:'#92B4DF',
       }
     },
     config: {

@@ -8,6 +8,7 @@ const MyTheme = {
      light400: '#F9FBFF',
      gray700: '#687588',
      blue100:'#1D2942',
+     pen50:'#92B4DF',
    },
    fontConfig:{
     poorstory:{

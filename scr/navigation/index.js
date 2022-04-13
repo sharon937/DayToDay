@@ -12,6 +12,8 @@ import Settingscreen from '../screen/Settingscreen';
 import Todoscreen from '../screen/Todoscreen';
 import Diarylistscreen from '../screen/Diarylistscreen';
 import Wishlistscreen from '../screen/WishlistScreen';
+import Nullscreen from '../screen/Nullscreen';
+import ActionButton from '../component/Actionbutton';
 
 import MyTheme from '../theme/Mytheme';
 
@@ -19,6 +21,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const Navigation =() =>{
+
     return(
         <NavigationContainer theme={MyTheme} >
             <Mytabs />
@@ -66,7 +69,15 @@ const Mytabs =()=>{
                     marginTop:8
                   },
             }}
-            />           
+            />  
+            <Tab.Screen
+            name="Actionbutton"
+            component={Nullscreen}
+            options={{
+                title:"",
+                tabBarIcon:({color})=><ActionButton/>  
+            }}
+            />         
            <Tab.Screen
             name="Wishlist"
             component={Wishlistscreen}
@@ -117,7 +128,7 @@ const HomeStack = () =>{
              component={Todoscreen}
              options={({navigation})=>({
                  title:'',
-                 headerShown: false,    
+                 headerShown: false,
              })}
             />
         </Stack.Navigator>
