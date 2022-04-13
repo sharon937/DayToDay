@@ -2,7 +2,8 @@ import React from 'react';
 import { NavigationContainer ,useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Pressable } from 'native-base';
+import { Pressable,  } from 'native-base';
+import { extendTheme,useColorMode } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -19,6 +20,7 @@ import MyTheme from '../theme/Mytheme';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
 
 const Navigation =() =>{
 
@@ -55,6 +57,7 @@ const Mytabs =()=>{
                 tabBarIconStyle:{
                     marginTop:8
                   },
+               
             }}
             />
            <Tab.Screen

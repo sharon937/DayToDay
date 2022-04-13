@@ -5,7 +5,6 @@ import Colorstheme from "../theme/Colorstheme";
 
 
 const Calenscreen =({ navigation })=>{
-
     return(
         <SafeAreaProvider >
             <NativeBaseProvider theme={Colorstheme}>

@@ -29,10 +29,10 @@ const ActionButton = () => {
                     </Box>
                 </Pressable>
                 <Actionsheet isOpen={isOpen} onClose={onClose}  >
-                    <Actionsheet.Content bg="primary.light">
-                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="1" mt="10"><Text color="primary.100">Keep a diary</Text></Actionsheet.Item>
-                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="1" mt="5"><Text color="primary.100">Wishlist</Text></Actionsheet.Item>
-                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="1" mt="5" mb="8"><Text color="primary.100">To Do List</Text></Actionsheet.Item>
+                    <Actionsheet.Content >
+                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="4" mt="10"><Text color="primary.100">Keep a diary</Text></Actionsheet.Item>
+                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="4" mt="8"><Text color="primary.100">Wishlist</Text></Actionsheet.Item>
+                    <Actionsheet.Item alignItems="center" bg="primary.light" borderRadius={30} shadow="4" mt="8" mb="8"><Text color="primary.100">To Do List</Text></Actionsheet.Item>
                     </Actionsheet.Content>
                 </Actionsheet>
             </Center>

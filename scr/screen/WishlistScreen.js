@@ -71,11 +71,11 @@ const WishListScreen = () => {
     <Box > 
     <VStack bg="primary.light" h="100%">
     <Center >
-        <Text fontSize={30} color="primary.100">Wishlist</Text>     
+        <Text fontSize={30} color="primary.100" m="3">Wishlist</Text>     
     </Center>
     <Center bg="#F9FBFF" w="100%">
       <ScrollView  h="100%">
-        <Box bg="#EDEFF2" w="343" h="500%" padding="2" mt="2" mx="auto" borderTopRadius="166" >
+        <Box bg="#EDEFF2" w="343" h="100%" padding="2" mt="2" mx="auto" borderTopRadius="166" borderBottomRadius="40">
 
           <AspectRatio h="85" mb="30">
           <Image  ml="50" w="224" h="85"

@@ -9,6 +9,9 @@ const Colorstheme = extendTheme({
         light: '#F9FBFF',
         100: '#1D2942',
         pen:'#92B4DF',
+        gray30:'#EDEFF2',
+        line10:'#CED4DF',
+        haha:'687588'
       }
     },
     config: {
