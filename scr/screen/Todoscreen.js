@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaProvider, SafeAreaView ,} from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider ,Center, Text, HStack } from "native-base";
+import { NativeBaseProvider ,Center, Text, HStack, VStack } from "native-base";
 import { Pressable } from 'native-base';
 
 
@@ -17,8 +17,7 @@ const Todoscreen = ({route,navigation}) => {
     <SafeAreaProvider>
         <StatusBar/>
         <NativeBaseProvider  theme={Colorstheme}>
-                <HStack  mt="10" flex={1} bg="primary.100" justifyContent="center" >                 
-                    <Pressable position="absolute" left="6" top="3.5">
+        <Pressable position="absolute" left="6" top={"8%"}>
                             <MaterialCommunityIcons 
                             name={'chevron-left'} 
                             color={'black'} 
@@ -26,12 +25,16 @@ const Todoscreen = ({route,navigation}) => {
                             onPress={ () => {navigation.goBack();}} 
                             />
                     </Pressable> 
-                    <Text fontSize={30}  color="primary.100" mt="4" >
+                <HStack  mt="10" flex={1} bg="primary.600" justifyContent="center" >                 
+                    
+                    <Text fontSize={30}  color="primary.100" mt="5" position="absolute" left={"1/3"} top="0.5" >
                         {year}/{month}/{day}
-                    </Text>       
+                    </Text> 
+                    
                 </HStack > 
-                        
+                <Todolist/>
         </NativeBaseProvider> 
+          
            
     </SafeAreaProvider>
     

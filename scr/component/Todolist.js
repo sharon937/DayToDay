@@ -57,9 +57,9 @@ const Todolist = () => {
 
 
   return (
-    <Center >
-      <ScrollView >
-        <Box  w="324" h="400" padding="2" mt="70" mx="auto"  borderRadius={15} shadow={3}>
+    <Center background={"#F9FBFF"} zIndex={-99}>
+      
+        <Box  background={"#EDEFF2"}w="324" h="400" padding="2" mt={"100"} mx="auto"  borderRadius={15} shadow={3}>
 
           <Text pt={30} fontSize="24" color='#1D2942' textAlign="center" mb="5">To Do List</Text>
           <VStack space={5} ml="5">
@@ -70,9 +70,9 @@ const Todolist = () => {
                   color: "#1D2942"}}/>
                   <VStack w="100%">
                      <Text width="100%" fontSize={20} flexShrink={1} textAlign="left" mx="2" strikeThrough={item.isCompleted} _light={{
-                      color: item.isCompleted ? "gray.400" : "#1D2942"
+                      color: item.isCompleted ? "gray.400" : "gray.400"
                       }} _dark={{
-                      color: item.isCompleted ? "gray.400" : "coolGray.50"
+                      color: item.isCompleted ? "gray.400" : "gray.400"
                       }} onPress={() => handleStatusChange(itemI)}>
                       {item.title}
                     </Text>
@@ -95,7 +95,7 @@ const Todolist = () => {
             alt='cloud'
           />
         </AspectRatio> 
-      </ScrollView>      
+         
     </Center>
 
   );
