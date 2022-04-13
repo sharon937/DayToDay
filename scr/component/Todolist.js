@@ -1,14 +1,14 @@
 import React from 'react';
-import { ScrollView, Input, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, NativeBaseProvider } from "native-base";
+import { ScrollView, Input, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack,useColorMode,  Icon, Center, useToast, NativeBaseProvider } from "native-base";
 import { useState } from 'react/cjs/react.production.min';
 import {Ionicons,AntDesign } from "@expo/vector-icons"
-
+import {lighttheme,darktheme} from "../theme/Modetheme"
 
 
 const Todolist = () => {
   const instState = [{
     title: "Homework",
-    isCompleted: true
+    isCompleted: false
   }, {
     title: "Meeting ",
     isCompleted: false
@@ -54,11 +54,15 @@ const Todolist = () => {
       return newList;
     });
   };
+  const { colorMode } = useColorMode();
+  const Mytheme = colorMode == 'light' ? lighttheme : darktheme;
 
+ 
 
   return (
-    <Center background={"#F9FBFF"} zIndex={-99}>
-      
+    <Box theme={Mytheme}>
+    <Center  zIndex={-99}  _dark={{ bg: "primary.100" }}
+                    _light={{ bg: "primary.light" }} >
         <Box  background={"#EDEFF2"}w="324" h="400" padding="2" mt={"100"} mx="auto"  borderRadius={15} shadow={3}>
 
           <Text pt={30} fontSize="24" color='#1D2942' textAlign="center" mb="5">To Do List</Text>
@@ -95,8 +99,9 @@ const Todolist = () => {
             alt='cloud'
           />
         </AspectRatio> 
-         
     </Center>
+    </Box>
+   
 
   );
 }

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
-import { NativeBaseProvider, Center } from 'native-base';
+import { NativeBaseProvider, Center ,useColorMode} from 'native-base';
 import { useFonts, PoorStory_400Regular } from '@expo-google-fonts/poor-story';
 import { Calendar } from 'react-native-calendars';
 import AppLoading from 'expo-app-loading';
@@ -14,6 +14,7 @@ const MyCalendar =({navigation}) => {
   if (!fontsLoaded){
     return <AppLoading/>;
   }
+  const {colorMode} = useColorMode();
 
   return (
     <NativeBaseProvider >
@@ -24,7 +25,7 @@ const MyCalendar =({navigation}) => {
               navigation.navigate('Todo', day);
             }}
            theme={{
-            calendarBackground: '#F9FBFF',
+            calendarBackground:'#F9FBFF',
             textMonthFontFamily: 'PoorStory_400Regular',
             textDayHeaderFontFamily: 'PoorStory_400Regular',
             textDayFontSize: 14,

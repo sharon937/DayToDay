@@ -1,10 +1,11 @@
 import React from 'react';
-import { ScrollView, Input, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, NativeBaseProvider } from "native-base";
+import { ScrollView, useColorMode, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, NativeBaseProvider } from "native-base";
 import { useState } from 'react/cjs/react.production.min';
 import {Ionicons,AntDesign } from "@expo/vector-icons"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import Colorstheme from '../theme/Colorstheme';
+import {lighttheme,darktheme} from "../theme/Modetheme"
 
 
 
@@ -63,17 +64,19 @@ const WishListScreen = () => {
       return newList;
     });
   };
+  const { colorMode } = useColorMode();
 
+  const Mytheme = colorMode == 'light' ? lighttheme : darktheme;
 
   return (
-    <NativeBaseProvider theme={Colorstheme}>
+    <NativeBaseProvider theme={Mytheme}>
       <SafeAreaView >
     <Box > 
     <VStack bg="primary.light" h="100%">
     <Center >
         <Text fontSize={30} color="primary.100" m="3">Wishlist</Text>     
     </Center>
-    <Center bg="#F9FBFF" w="100%">
+    <Center bg="primary.light" w="100%">
       <ScrollView  h="100%">
         <Box bg="#EDEFF2" w="343" h="100%" padding="2" mt="2" mx="auto" borderTopRadius="166" borderBottomRadius="40">
 

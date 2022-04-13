@@ -34,15 +34,15 @@ const Navigation =() =>{
 const Mytabs =()=>{
 
     const { colors } = useTheme();
-
+    const {colorMode} = useColorMode();
     return(
         <Tab.Navigator
             initialRouteName="HomeStack"
             screenOptions={{
-            tabBarActiveTintColor: colors.light400,
-            tabBarInactiveTintColor: colors.gray700,
-            tabBarActiveBackgroundColor: colors.blue100,
-            tabBarInactiveBackgroundColor:colors.blue100,
+            tabBarActiveTintColor: colorMode == 'light' ? '#F9FBFF' :'#1D2942',
+            tabBarInactiveTintColor: colorMode == 'light' ? '#687588' :'#B3BDCB',
+            tabBarActiveBackgroundColor: colorMode == 'light' ? '#1D2942' :'#F9FBFF',
+            tabBarInactiveBackgroundColor:colorMode == 'light' ? '#1D2942' :'#F9FBFF',
             headerShown: false,
             }}
         >

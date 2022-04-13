@@ -1,6 +1,4 @@
-import React from 'react';
 import {extendTheme } from 'native-base';
-
 
 const Colorstheme = extendTheme({
     colors: {
@@ -16,7 +14,7 @@ const Colorstheme = extendTheme({
     },
     config: {
       // Changing initialColorMode to 'dark'
-      initialColorMode: 'dark',
+    
     },
     fontConfig:{
       poorstory:{

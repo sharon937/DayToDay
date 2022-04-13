@@ -2,9 +2,11 @@ import React from 'react';
 import { NativeBaseProvider ,HStack,Box,Center, Text ,useColorMode, Switch} from "native-base";
 import Colorstheme from '../theme/Colorstheme';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {lighttheme,darktheme} from "../theme/Modetheme"
 
 const SettingsScreen = () => {
     const { colorMode, toggleColorMode } = useColorMode();
+
 
    return (
     <Box
@@ -28,6 +30,7 @@ const SettingsScreen = () => {
                         onToggle={toggleColorMode}
                         accessibilityLabel="display-mode"
                         accessibilityHint="light or dark mode"
+                        offTrackColor="#F9FBFF" onTrackColor="#1D2942" onThumbColor="#B3BDCB" offThumbColor="#B3BDCB"
                     />
                 </HStack>
             </Center>
