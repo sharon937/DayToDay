@@ -7,17 +7,22 @@ import { useColorMode,NativeBaseProvider,VStack} from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colorstheme from '../theme/Colorstheme';
 import {lighttheme,darktheme} from "../theme/Modetheme"
+import { useDispatch,useSelector } from 'react-redux';
+import { setWish } from '../redux/wishSlice';
+import { selectGeneral } from '../redux/wishSlice';
 
 
 
 
 const WishListScreen = () => {
-  const [task, setWish] = useState();
+
+  const general = useSelector(selectGeneral);
+  const [wish, setWish] = useState(general.wish);
   const [taskItems, setWishItems] = useState([]);
 
   const handleAddWish = () => {
     Keyboard.dismiss();
-    setWishItems([...taskItems, task])
+    setWishItems([...taskItems, wish])
     setWish(null);
   }
 
@@ -76,7 +81,7 @@ const WishListScreen = () => {
               behavior={Platform.OS === "ios" ? "padding" : "height"}
               style={styles.writeWishWrapper}
             >
-              <TextInput style={styles.input} placeholder={'Make a wish'} value={task} onChangeText={text => setWish(text)}/>
+              <TextInput style={styles.input} placeholder={'Make a wish'} value={wish} onChangeText={text => setWish(text)}/>
 
               <TouchableOpacity onPress={() => handleAddWish()}>
                 <View style={styles.addWish}>
@@ -139,6 +144,7 @@ const WishListScreen = () => {
       alignItems:'center',
       borderColor:'#1D2942',
       borderWidth:1,
+      backgroundColor:'#f9fbff'
     },
     add:{
 

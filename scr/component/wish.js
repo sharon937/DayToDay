@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image}from 'react-native';
 
 
-
 const Wish = (props) =>{
 
     const [check,updatecheck]=useState(false)
