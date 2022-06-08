@@ -1,9 +1,10 @@
-import React from 'react';
-import { ScrollView, useColorMode, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, NativeBaseProvider } from "native-base";
-import { useState } from 'react/cjs/react.production.min';
-import {Ionicons,AntDesign } from "@expo/vector-icons"
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-
+import React, { useState }  from 'react';
+import { StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Keyboard} from 'react-native';
+import { ScrollView, View, Image, Text, Box, Center, } from "native-base";
+import { LinearGradient } from 'expo-linear-gradient';
+import Wish from '../component/wish';
+import { useColorMode,NativeBaseProvider,VStack} from 'native-base';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Colorstheme from '../theme/Colorstheme';
 import {lighttheme,darktheme} from "../theme/Modetheme"
 
@@ -11,59 +12,23 @@ import {lighttheme,darktheme} from "../theme/Modetheme"
 
 
 const WishListScreen = () => {
-  const instState = [{
-    title: "Travel Abroad",
-    isCompleted: false
-  }, {
-    title: "Go Camping",
-    isCompleted: false
-  }, {
-    title: "Picnic",
-    isCompleted: false
-  }, {
-    title: "Go To A Concert",
-    isCompleted: false
- 
-  }, {
-    title: "Go To The Beach",
-    isCompleted: false
-  }];
+  const [task, setWish] = useState();
+  const [taskItems, setWishItems] = useState([]);
 
-  const [list, setList] = React.useState(instState);
-  const [inputValue, setInputValue] = React.useState("");
-  const toast = useToast();
+  const handleAddWish = () => {
+    Keyboard.dismiss();
+    setWishItems([...taskItems, task])
+    setWish(null);
+  }
 
-  const addItem = title => {
-    if (title === "") {
-      toast.show({
-        title: "Add New WishList",
-        status: "warning"
-      });
-      return;
-    }
+  const deleteWish = (index) => {
+    let itemsCopy = [...taskItems]
+    itemsCopy.splice(index, 1)
 
-    setList(prevList => {
-      return [...prevList, {
-        title: title,
-        isCompleted: false
-      }];
-    });
-  };
+    setWishItems(itemsCopy)
 
-  const handleDelete = index => {
-    setList(prevList => {
-      const temp = prevList.filter((_, itemI) => itemI !== index);
-      return temp;
-    });
-  };
+  }
 
-  const handleStatusChange = index => {
-    setList(prevList => {
-      const newList = [...prevList];
-      newList[index].isCompleted = !newList[index].isCompleted;
-      return newList;
-    });
-  };
   const { colorMode } = useColorMode();
 
   const Mytheme = colorMode == 'light' ? lighttheme : darktheme;
@@ -77,44 +42,54 @@ const WishListScreen = () => {
         <Text fontSize={30} color="primary.100" m="3">Wishlist</Text>     
     </Center>
     <Center bg="primary.light" w="100%">
-      <ScrollView  h="100%">
-        <Box bg="#EDEFF2" w="343" h="100%" padding="2" mt="2" mx="auto" borderTopRadius="166" borderBottomRadius="40">
-
-          <AspectRatio h="85" mb="30">
+    <ScrollView >
+        <Box  w="343" h="570" padding="2" mt="2" mx="auto" borderTopRadius="166" >
+        <LinearGradient borderTopRadius="166"
+        // Background Linear Gradient
+        colors={['#EDEFF2', '#FFFDFD00']}
+        style={styles.background}
+        />
+         
           <Image  ml="50" w="224" h="85"
             source={{uri:'https://raw.githubusercontent.com/leeecch/mid/main/make%20a%20wish%20(1).png'}}
             alt='make a wish'
           />
-        </AspectRatio>
-          <VStack space={5} ml="5" >
-            {list.map((item, itemI) => 
-            <HStack w="100%" justifyContent="space-between" alignItems="center" key={item.title + itemI.toString()}>
-                <IconButton icon={<Icon as={Ionicons} name="moon-outline" />} isChecked={item.isCompleted} 
-                onPress={() => handleStatusChange(itemI)} value={item.title} _icon={{
-                  color: "#1D2942"}}/>
-                  <VStack w="100%">
-                     <Text width="100%" fontSize={20} flexShrink={1} textAlign="left" mx="2" strikeThrough={item.isCompleted} _light={{
-                      color: item.isCompleted ? "gray.400" : "gray.400"
-                      }} _dark={{
-                      color: item.isCompleted ? "gray.400" : "gray.400"
-                      }} onPress={() => handleStatusChange(itemI)}>
-                      {item.title}
-                    </Text>
-                    <Divider bg="#1D2942" w="215"/>
-                  </VStack>
-                  
-              </HStack>)}
- 
-          </VStack>
-  
+         
+          <View style={styles.items}>
+
+            {
+              taskItems.map((item, index) => {
+                return (
+                  <TouchableOpacity key={index} onPress={() => deleteWish(index)}>
+                    < Wish text={item} />
+                  </TouchableOpacity>
+                )
+               
+              })
+            }
+
+            {/*<Wish text={'Wish 1'}/>
+            <Wish text={'Wish 2'}/> */}
+          </View>
+
+          <KeyboardAvoidingView
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              style={styles.writeWishWrapper}
+            >
+              <TextInput style={styles.input} placeholder={'Make a wish'} value={task} onChangeText={text => setWish(text)}/>
+
+              <TouchableOpacity onPress={() => handleAddWish()}>
+                <View style={styles.addWish}>
+                  <Text style={styles.add}>+</Text>
+                </View>
+              </TouchableOpacity>
+            </KeyboardAvoidingView>
             
-            <IconButton icon={<Icon as={AntDesign} name="pluscircleo" size="6" mt="5"/>} onPress={() => {
-            addItem(inputValue);
-            setInputValue("");}} _icon={{color: "#1D2942"}}/>
+          
          
         </Box>    
 
-      </ScrollView>      
+      </ScrollView>  
     </Center>
     </VStack>
     </Box>
@@ -124,4 +99,50 @@ const WishListScreen = () => {
   );
 }
 
+  const styles=StyleSheet.create({
+
+    background: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: '100%',
+      borderRadius:166
+    },
+    items: {
+      marginTop:30,
+    },
+    writeWishWrapper:{
+      position:'absolute',
+      bottom: 20,
+      width:'90%',
+      flexDirection:'row',
+      justifyContent:'space-between',
+      alignItems:'center',
+      marginLeft:25,
+      marginRight:25
+    },
+    input:{
+      paddingVertical:12,
+      paddingHorizontal:15,
+      backgroundColor:'#F9FBFF',
+      borderRadius:60,
+      borderColor:'#1D2942',
+      borderWidth:1,
+      width:230,
+    },
+    addWish:{
+      width:28,
+      height:28,
+      borderRadius:60,
+      justifyContent:'center',
+      alignItems:'center',
+      borderColor:'#1D2942',
+      borderWidth:1,
+    },
+    add:{
+
+    }
+
+  });
 export default WishListScreen;
