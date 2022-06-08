@@ -1,12 +1,26 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
 import { StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Keyboard} from 'react-native';
 import { ScrollView, Input, AspectRatio, Image, IconButton, Divider, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, NativeBaseProvider, Pressable, View,useColorMode } from "native-base";
 import {Ionicons,AntDesign } from "@expo/vector-icons";
 import Task from './task';
 import {lighttheme,darktheme} from "../theme/Modetheme";
+import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming, withSpring } from 'react-native-reanimated';
+
 
 
 const Todolist = () => {
+
+  const rotate = useSharedValue(10);
+  const animatedStyles = useAnimatedStyle(() => ({
+      transform: [{ translateY: rotate.value }],
+    }));
+
+  useEffect(() => {
+    rotate.value = withTiming(50, {
+      duration: 5000,
+      
+    });
+  }, [])
  
   const { colorMode } = useColorMode();
   const Mytheme = colorMode == 'light' ? lighttheme : darktheme;
@@ -76,13 +90,15 @@ const Todolist = () => {
       </ScrollView> 
      
     </Box>
-        </Box>    
-        <AspectRatio w="100%" mb="0">
-                <Image
-                  source={{uri:'https://raw.githubusercontent.com/leeecch/mid/main/Slice%201.png'}}
-                  alt='cloud'
-                />
-        </AspectRatio> 
+        </Box>     
+        <Animated.Image
+              style={[{
+                width: 450,
+                height: 280,
+                borderRadius: 0,
+              }, animatedStyles]}
+              source={{uri:'https://raw.githubusercontent.com/leeecch/mid/main/Slice%201.png'}}
+            />
     </Box>
     
     </Box>
@@ -100,6 +116,7 @@ const styles=StyleSheet.create({
     marginBottom:24
   },
   item: {
+    marginTop:10,
     
 
   },

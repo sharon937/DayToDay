@@ -6,7 +6,7 @@ import Navigation from "./scr/navigation";
 
 const App =() => {
   return(
-  <Provider store={store}>
+   <Provider store={store}>
     <NativeBaseProvider>
       <Navigation/>
     </NativeBaseProvider>

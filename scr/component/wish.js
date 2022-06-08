@@ -26,7 +26,7 @@ const Wish = (props) =>{
 
                 <View style={styles.textline}>
                     <Text style={styles.itemText}>{props.text}</Text>
-                    <Text style={styles.line}> ─────────────── </Text>
+                    <Text style={styles.line}> ──────────────────── </Text>
                 </View>
 
                 

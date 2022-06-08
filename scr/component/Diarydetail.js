@@ -4,6 +4,7 @@ import { HStack, VStack } from "native-base";
 import Colorstheme from "../theme/Colorstheme";
 import { Image, StyleSheet } from "react-native";
 
+
 const Diarydetail = props => {
     let {album} = props;
     return(
